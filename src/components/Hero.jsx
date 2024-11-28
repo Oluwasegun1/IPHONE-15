@@ -2,12 +2,13 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { heroVideo, smallHeroVideo } from "../utils";
 import { useEffect, useState } from "react";
+
 const Hero = () => {
   const [videoSrc, setVideoSrc] = useState(
     window.innerWidth < 760 ? smallHeroVideo : heroVideo
   );
 
-  const handleVideoSrcset = () => {
+  const handleVideoSrcSet = () => {
     if (window.innerWidth < 760) {
       setVideoSrc(smallHeroVideo);
     } else {
@@ -16,20 +17,21 @@ const Hero = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleVideoSrcset);
+    window.addEventListener("resize", handleVideoSrcSet);
+
     return () => {
-      window.removeEventListener("resize", handleVideoSrcset);
+      window.removeEventListener("reisze", handleVideoSrcSet);
     };
   }, []);
 
   useGSAP(() => {
     gsap.to("#hero", { opacity: 1, delay: 2 });
     gsap.to("#cta", { opacity: 1, y: -50, delay: 2 });
-    gsap.to("#highlights", { opacity: 1, delay: 2.5 });
-  });
+  }, []);
+
   return (
     <section className="w-full nav-height bg-black relative">
-      <div className="h-5/6 w-full flex-center flex-col ">
+      <div className="h-5/6 w-full flex-center flex-col">
         <p id="hero" className="hero-title">
           iPhone 15 Pro
         </p>
@@ -45,6 +47,7 @@ const Hero = () => {
           </video>
         </div>
       </div>
+
       <div
         id="cta"
         className="flex flex-col items-center opacity-0 translate-y-20"
@@ -52,7 +55,7 @@ const Hero = () => {
         <a href="#highlights" className="btn">
           Buy
         </a>
-        <p className="font-normal text-xl">from $199/month or $999</p>
+        <p className="font-normal text-xl">From $199/month or $999</p>
       </div>
     </section>
   );
