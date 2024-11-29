@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import * as Sentry from "@sentry/react";
 import Features from "./components/Features";
 import Footer from "./components/Footer";
+import HowItWorks from "./components/HowItWorks";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Highlights />
       <Model />
       <Features />
+      <HowItWorks />
       <Footer />
     </main>
   );
